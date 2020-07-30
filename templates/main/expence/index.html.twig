@@ -30,7 +30,7 @@
                 <h2>Операции</h2>
                 <ol>
                     {% for expence_item in expence %}
-                        <li>{{expence_item.title}} | {{expence_item.amount}}</li>
+                        <li> {{ expence_item.createdAt()|date('Y.m.d h:m') }} | {{expence_item.title}} | {{expence_item.amount}}</li>
                         <a href="{{ path('expence_update', {'id': expence_item.id }) }}"
                            class="btn-link"> Изменить
                         </a>

@@ -19,7 +19,10 @@ class CategoryController extends BaseController
      */
     public function index()
     {
-        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $user = $this->getUser();
+        $id = $user->getId();
+        $categories = $this->getDoctrine()->getRepository(Category::class)
+            ->findBy(array('user' => $id));
         $forRender = parent::renderDefault();
         $forRender['title'] = 'Управление категориями';
         $forRender['categories'] = $categories;
@@ -28,7 +31,7 @@ class CategoryController extends BaseController
 
 
     /**
-     * @Route("/category/create", name = "category_create")
+     * @Route("/categories/create", name = "category_create")
      * @param Request $request
      * @return RedirectResponse|Response
      */
@@ -42,6 +45,8 @@ class CategoryController extends BaseController
 
         if($form->isSubmitted() && $form->isValid())
         {
+            $user = $this->getUser();
+            $category->setUser($user);
             $em->persist($category);
             $em->flush();
             $this->addFlash('success', 'Категория создана');
@@ -54,7 +59,7 @@ class CategoryController extends BaseController
     }
 
     /**
-     * @Route("category/update/{id}", name = "category_update")
+     * @Route("categories/update/{id}", name = "category_update")
      * @param int $id
      * @param Request $request
      * @return RedirectResponse|Response

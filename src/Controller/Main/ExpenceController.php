@@ -31,7 +31,7 @@ class ExpenceController extends BaseController
     }
 
     /**
-     * @Route("/expence_list/create", name = "expence_create")
+     * @Route("/expences/create", name = "expence_create")
      * @param Request $request
      */
 
@@ -60,7 +60,7 @@ class ExpenceController extends BaseController
         return $this->render('main/expence/form.html.twig', $forRender);
     }
     /**
-     * @Route("expence/update/{id}", name = "expence_update")
+     * @Route("expences/update/{id}", name = "expence_update")
      * @param int $id
      * @param Request $request
      * @return RedirectResponse|Response
