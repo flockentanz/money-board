@@ -1,0 +1,46 @@
+{% extends 'main/base.html.twig' %}
+{% block title %}{{title}}{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center mt-5">
+            <div class="col-8 col-lg-6 col-md-6">
+                <h1 class="display-4">
+                    {{ title }}
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row no-gutters justify-content-center mt-5">
+            <div class="col-8 col-lg-6 col-md-6">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button ty  pe="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row no-gutters justify-content-center mt-5">
+            <div class="col-8 col-lg-6 col-md-6">
+                <h2>Список категорий</h2>
+                <ol>
+                    {% for category_item in categories %}
+                        <li>{{category_item.title}} | {{category_item.description}}
+                            <a href="{{ path('category_update', {'id': category_item.id }) }}"
+                            class="btn-link"> Изменить
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <a class="nav-link" href="{{ path('category_create') }}"> Создать категорию <span class="sr-only">(current)</span></a>
+
+{% endblock %}
