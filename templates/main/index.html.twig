@@ -10,6 +10,27 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center mt-5">
+            <div class="col-12 col-lg-6 col-md-6">
+                <h1 class="display-4">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('expence_create') }}">Добавить расход <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('expence_list') }}">Расходы <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('statistics') }}">Статистика</a>
+                        <h4>Не функционирует</h4>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('category_list') }}">Управление категориями</a>
+                    </li>
+                </h1>
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}
