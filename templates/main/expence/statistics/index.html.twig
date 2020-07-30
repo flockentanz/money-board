@@ -1,0 +1,70 @@
+{% extends 'main/base.html.twig' %}
+{% block title %}{{title}}{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row no-gutters justify-content-center mt-5">
+            <div class="col-12 col-lg-6 col-md-6">
+                <h1 class="display-4">
+                    {{ title }}
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <div class="input-group date" id="datetimepicker7">
+                    <input type="text" class="form-control"/>
+                    <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <div class="input-group date" id="datetimepicker8">
+                    <input type="text" class="form-control"/>
+                    <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            // инициализация datetimepicker7 и datetimepicker8
+            $("#datetimepicker7").datetimepicker();
+            $("#datetimepicker8").datetimepicker({
+                useCurrent: false
+            });
+            $("#datetimepicker7").on("dp.change", function (e) {
+                $('#datetimepicker8').data("DateTimePicker").minDate(e.date);
+            });
+            $("#datetimepicker8").on("dp.change", function (e) {
+                $('#datetimepicker7').data("DateTimePicker").maxDate(e.date);
+            });
+        });
+    </script>
+    <div class="container-fluid" >
+        <div class="row no-gutters">
+            <div class="col-12">
+                <h2>Операции</h2>
+                <ol>
+                    {% for expence_item in expence %}
+                        <li> {{ expence_item.createdAt()|date('Y.m.d h:m') }} | {{expence_item.title}} | {{expence_item.amount}}</li>
+                        <a href="{{ path('expence_update', {'id': expence_item.id }) }}"
+                           class="btn-link"> Изменить
+                        </a>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+
+
+    <a class="nav-link" href="{{ path('expence_create') }}"> Добавить расход <span class="sr-only">(current)</span></a>
+
+{% endblock %}

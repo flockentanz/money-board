@@ -124,4 +124,5 @@ class User implements UserInterface
     {
         $this->plainPassword = $password;
     }
+
 }

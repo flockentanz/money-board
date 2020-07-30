@@ -22,7 +22,7 @@
                     <a class="nav-link" href="{{ path('expence_list') }}">Расходы <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Статистика</a>
+                    <a class="nav-link" href="{{ path('statistics') }}">Статистика</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ path('category_list') }}">Управление категориями</a>
@@ -53,6 +53,12 @@
                         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
                         crossorigin="anonymous"></script>
             <script src = "{{ asset('assets/framework/bootstrap-4.4.1/js/bootstrap.min.js') }}"></script>
+
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
         {% endblock %}
+
     </body>
 </html>
