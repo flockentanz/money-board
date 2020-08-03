@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ExpenceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * @ORM\Entity(repositoryClass=ExpenceRepository::class)
@@ -24,12 +25,14 @@ class Expence
 
     /**
      * @ORM\Column(type="float")
+     * @SerializedName("Сумма")
      */
     private $amount;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class)
      * @ORM\JoinColumn(nullable=false)
+     * @SerializedName("Категория")
      */
     private $category;
 
@@ -41,6 +44,7 @@ class Expence
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @SerializedName("Описание")
      */
     private $title;
 

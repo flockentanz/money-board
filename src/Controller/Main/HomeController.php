@@ -55,10 +55,9 @@ class HomeController extends BaseController
 
     }
 
-    public function createDefault($user)
+    private function createDefault($user)
     {
         $em = $this->getDoctrine()->getManager();
-#        $id = $user->getId();
         $category1 = new Category();
         $category1->setTitle('Продукты');
         $category2 = new Category();
@@ -73,8 +72,8 @@ class HomeController extends BaseController
             $em->persist($category);
             $em->flush();
         }
+
         return $categories;
     }
-
 
 }

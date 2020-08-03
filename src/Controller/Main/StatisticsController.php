@@ -15,8 +15,9 @@ class StatisticsController extends BaseController
      */
     public function index()
     {
+        $id = $this->getUser()->getId();
         $expence = $this->getDoctrine()->getRepository(Expence::class)
-            ->findAll();
+            ->findBy(array('user' => $id));
 
         $forRender = parent::renderDefault();
         $forRender['title'] = 'Статистика расходов';
